@@ -6,7 +6,7 @@ import os
 from common.base import consoleLog
 
 
-class Excel():
+class Excel(object):
     """Excel对象
     :param path: Excel路径
     :param sheetIndex: 表索引
@@ -18,7 +18,7 @@ class Excel():
         if path:
             self.path = path
             if not os.path.exists(self.path):
-                consoleLog(u'文件不存在！')
+                consoleLog('文件不存在！')
                 exit()
             else:
                 self.sheetName = sheetName
@@ -54,21 +54,21 @@ class Excel():
     def readCell(self, row, col):
         """坐标单元格内容"""
         if row ==0 or col == 0:
-            consoleLog(u'行或列不能等于0')
+            consoleLog('行或列不能等于0')
         else:
             return self.sheet().cell_value(row-1, col-1)
 
     def readRow(self,row):
         """整行数据列表"""
         if row == 0:
-            consoleLog(u'行不能等于0')
+            consoleLog('行不能等于0')
         else:
             return self.sheet().row_values(row-1)
 
     def readCol(self, col):
         """整列数据列列表"""
         if col == 0:
-            consoleLog(u'列不能等于0')
+            consoleLog('列不能等于0')
         else:
             return self.sheet().col_values(col-1)
 
